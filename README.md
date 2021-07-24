@@ -14,32 +14,9 @@ Project submission: **Deploy Static Website on AWS**
 ![Static hosting enabled](./screenshots/static_hosting_enabled.png)
 
 4. **The permission access to the bucket should be configured.**
+![Bucket policy](./screenshots/bucket_policy.png)
 
-    ```json
-    {
-        "Version": "2012-10-17",
-        "Statement": [
-            {
-                "Sid": "PublicReadGetObject",
-                "Effect": "Allow",
-                "Principal": "*",
-                "Action": "s3:GetObject",
-                "Resource": "arn:aws:s3:::udacity-cd-c1-travel-blog/*"
-            },
-            {
-                "Sid": "Cloudfront",
-                "Effect": "Allow",
-                "Principal": {
-                    "AWS": "arn:aws:iam::cloudfront:user/CloudFront Origin Access Identity E15I2Z9YDI46GF"
-                },
-                "Action": "s3:GetObject",
-                "Resource": "arn:aws:s3:::udacity-cd-c1-travel-blog/*"
-            }
-        ]
-    }
-    ```
-
-    > One thing to add: We don't need to make the bucket public since we are gonna hook it upto to Cloudfront anyway, and it automatically takes care of this via second bucket policy above.
+    > One thing to add: We don't need to make this bucket 'public' since we are gonna hook it upto to Cloudfront anyway, and it automatically takes care of this via second bucket policy in the image above.
     >
     > But I am making it public as well because it is specified in the rubric.
 
